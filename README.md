@@ -49,7 +49,7 @@ A montagem do robô segue o esquema do tutorial da [Eletrogate](https://blog.ele
 ## 💾 Instalação e Configuração
 ### 1️⃣ Clone este repositório
 ```bash
-git clone https://github.com/Herysson/TwoWheelRobot.git
+git clone https://github.com/andreflores2009/TwoWheelRobot_APP_2025.git
 cd TwoWheelRobot
 ```
 
