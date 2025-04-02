@@ -50,7 +50,7 @@ A montagem do robô segue o esquema do tutorial da [Eletrogate](https://blog.ele
 ### 1️⃣ Clone este repositório
 ```bash
 git clone https://github.com/andreflores2009/TwoWheelRobot_APP_2025.git
-cd TwoWheelRobot
+cd TwoWheelRobot_APP_2025
 ```
 
 ### 2️⃣ Instale a IDE do Arduino
