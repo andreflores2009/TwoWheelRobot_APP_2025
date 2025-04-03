@@ -83,6 +83,4 @@ public class BluetoothServiceImpl implements BluetoothService {
         }
         return device;
     }
-
-
 }
