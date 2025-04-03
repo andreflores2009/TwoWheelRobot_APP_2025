@@ -1,7 +1,10 @@
 package com.ufn.wheelrobotcontrollerapp.services;
 
+import com.ufn.wheelrobotcontrollerapp.models.Device;
+
 public interface BluetoothService {
-    boolean connect();
+    void connect();
     boolean isConnected();
     void disconnect();
+    Device getConnectedDevice();
 }

@@ -22,6 +22,7 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import com.ufn.wheelrobotcontrollerapp.R;
+import com.ufn.wheelrobotcontrollerapp.models.Device;
 import com.ufn.wheelrobotcontrollerapp.services.BluetoothService;
 import com.ufn.wheelrobotcontrollerapp.services.implementation.BluetoothServiceImpl;
 
@@ -43,6 +44,22 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
+                                           @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+
+        if (requestCode == REQUEST_BLUETOOTH_PERMISSION) {
+            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
+                bluetoothService.connect();
+                Device device = bluetoothService.getConnectedDevice();
+                Toast.makeText(this, "Conectado com sucesso ao dispositivo: " + device.getName(), Toast.LENGTH_SHORT).show();
+            } else {
+                handleRetryRequestPermissions();
+            }
+        }
+    }
+
     private void checkBluetoothPermissions() {
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.BLUETOOTH_CONNECT)
                 != PackageManager.PERMISSION_GRANTED) {
@@ -53,32 +70,19 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions,
-                                           @NonNull int[] grantResults) {
-        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
-
-        if (requestCode == REQUEST_BLUETOOTH_PERMISSION) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                bluetoothService.connect();
-            } else {
-                Log.e("Bluetooth", "Permissão negada pelo usuário.");
-                Toast.makeText(this, "Permissão de Bluetooth necessária!", Toast.LENGTH_LONG).show();
-                new AlertDialog.Builder(this)
-                        .setTitle("Permissão Necessária")
-                        .setMessage("O aplicativo precisa de acesso ao Bluetooth. Vá para as Configurações e ative a permissão.")
-                        .setPositiveButton("Abrir Configurações", (dialog, which) -> {
-                            Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
-                            Uri uri = Uri.fromParts("package", getPackageName(), null);
-                            intent.setData(uri);
-                            startActivity(intent);
-                            finish();
-                        })
-                        .setNegativeButton("Fechar", (dialog, which) -> finish())
-                        .show();
-            }
-        }
+    private void handleRetryRequestPermissions() {
+        new AlertDialog.Builder(this)
+            .setTitle("Permissão Necessária")
+            .setMessage("O aplicativo precisa de acesso ao Bluetooth. Vá para as Configurações e ative a permissão.")
+            .setPositiveButton("Abrir Configurações", (dialog, which) -> {
+                Intent intent = new Intent(Settings.ACTION_APPLICATION_DETAILS_SETTINGS);
+                Uri uri = Uri.fromParts("package", getPackageName(), null);
+                intent.setData(uri);
+                startActivity(intent);
+                finish();
+            })
+            .setNegativeButton("Fechar", (dialog, which) -> finish())
+            .show();
+        Toast.makeText(this, "Permissão de Bluetooth necessária!", Toast.LENGTH_LONG).show();
     }
-
-
 }
