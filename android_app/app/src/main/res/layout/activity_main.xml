@@ -7,14 +7,196 @@
     android:layout_height="match_parent"
     tools:context=".ui.MainActivity">
 
-    <TextView
-        android:id="@+id/testingPermission"
+        <Button
+            android:id="@+id/btnConectar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#7B4DB3"
+            android:text="Conectar Bluetooth"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/statusConexao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:text="Status: aguardando conexão..."
+            android:textSize="16sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnConectar" />
+
+        <!-- Botões de direção -->
+        <Button
+            android:id="@+id/btnCima"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="30dp"
+            android:backgroundTint="#7B4DB3"
+            android:text="↑"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/statusConexao" />
+
+        <Button
+            android:id="@+id/btnEsquerda"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#7B4DB3"
+            android:text="←"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toStartOf="@id/btnParar"
+            app:layout_constraintTop_toBottomOf="@id/btnCima" />
+
+        <Button
+            android:id="@+id/btnParar"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#7B4DB3"
+            android:text="■"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnCima" />
+
+        <Button
+            android:id="@+id/btnDireita"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#7B4DB3"
+            android:text="→"
+            android:textColor="@android:color/white"
+            app:layout_constraintStart_toEndOf="@id/btnParar"
+            app:layout_constraintTop_toBottomOf="@id/btnCima" />
+
+        <Button
+            android:id="@+id/btnBaixo"
+            android:layout_width="60dp"
+            android:layout_height="60dp"
+            android:layout_marginTop="20dp"
+            android:backgroundTint="#7B4DB3"
+            android:text="↓"
+            android:textColor="@android:color/white"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnParar" />
+
+        <!-- Linha inferior de comandos -->
+        <LinearLayout
+            android:id="@+id/linhaComandos"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="30dp"
+            android:orientation="horizontal"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/btnBaixo">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnAcelera"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#7B4DB3"
+                    android:text="X"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Acelera"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnReduz"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#7B4DB3"
+                    android:text="S"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Reduz"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnMaisCurva"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#7B4DB3"
+                    android:text="C"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="+ Curva"
+                    android:textAlignment="center" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/btnMenosCurva"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:backgroundTint="#7B4DB3"
+                    android:text="T"
+                    android:textColor="@android:color/white" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="- Curva"
+                    android:textAlignment="center" />
+            </LinearLayout>
+        </LinearLayout>
+
+    <Button
+        android:id="@+id/btnDesconectar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="20dp"
+        android:backgroundTint="#7B4DB3"
+        android:text="Desconectar"
+        android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/linhaComandos" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
