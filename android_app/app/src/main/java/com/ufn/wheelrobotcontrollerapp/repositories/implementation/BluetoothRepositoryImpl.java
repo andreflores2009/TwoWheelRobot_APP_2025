@@ -21,7 +21,7 @@ import java.util.Set;
 import java.util.UUID;
 
 public class BluetoothRepositoryImpl implements BluetoothRepository {
-    private static final String TAG = "BluetoothService";
+    private static final String TAG = "BluetoothRepository";
     private final BluetoothStatusManager statusManager;
     private final BluetoothAdapter bluetoothAdapter;
     private BluetoothSocket socket;
